@@ -12,6 +12,8 @@ function formatAge (age) {
     }
 }
 
+var badTopics = ['angular.js', 'XML', 'SOAP-RPC', 'angular.js'];
+
 (function(global, $, APP) {
 
     "use strict";
@@ -33,6 +35,11 @@ function formatAge (age) {
 
     Person.prototype = {
         addLike: function(topic) {
+
+            if (badTopics.indexOf(topic) !== -1) {
+                throw new Error('bad topic ' + topic + ' added');
+            }
+
             if (this.likes.indexOf(topic) !== -1) {
                 this.likes.push(topic);
             }
