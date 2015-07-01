@@ -1,19 +1,24 @@
+
 var APP = APP || {};
+
+
+function noop(){}
+
+function formatAge (age) {
+    if (typeof age === 'number') {
+        return age + ' years';
+    } else {
+        return 'Not given';
+    }
+}
 
 (function(global, $, APP) {
 
+    "use strict";
     APP.models = APP.models || {};
 
     var config = global.config;
     var API = global.API;
-
-    function formatAge (age) {
-        if (typeof age === 'number') {
-            return age + ' years';
-        } else {
-            return 'Not given';
-        }
-    }
 
     function Person(name, age, location) {
         name = name || 'Name';
@@ -66,15 +71,27 @@ var APP = APP || {};
             };
         },
         save: function(errorHandler, done) {
+            errorHandler = typeof errorHandler === 'function' || noop;
+            done = typeof done === 'function' || noop;
+
             var name = this.name;
             var age = this.age;
             var location = this.location;
-            var likes = this.getLikes;
+            var likes = this.getLikes();
 
-            API.save({
+            API.save('/user', {
                 name: name,
                 age: age,
-                location: location,
+                location: location
+            }, errorHandler, done);
+        },
+        saveLikes: function(errorHandler, done) {
+
+            errorHandler = typeof errorHandler === 'function' || noop;
+            done = typeof done === 'function' || noop;
+
+            var likes = this.getLikes();
+            API.save(config.getLikesUrl(), {
                 likes: likes
             }, errorHandler, done);
         }
