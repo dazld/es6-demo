@@ -9,13 +9,14 @@ let notify = require('gulp-notify');
 let concat = require('gulp-concat');
 
 let debug = require('gulp-debug');
-let plumber = require('gulp-plumber');
+// let plumber = require('gulp-plumber');
 let source = require('vinyl-source-stream');
 let gutil = require('gulp-util');
 let gulpif = require('gulp-if');
 let sourcemaps = require('gulp-sourcemaps');
 let watch = require('gulp-watch');
-
+let spawn = require('child_process').spawn;
+let argv = require('yargs').argv;
 let connect = require('gulp-connect');
 let connectLiveReload = require('connect-livereload');
 let liveReload = require('gulp-livereload');
@@ -77,7 +78,7 @@ gulp.task('html', function() {
 
 gulp.task('assets',['css', 'html']);
 
-gulp.task('build', ['client', 'assets']);
+gulp.task('build', ['concat', 'assets']);
 
 
 
@@ -118,6 +119,29 @@ gulp.task('watch', function() {
 
 });
 
+
+
+gulp.task('auto-reload', function() {
+    let nodeProcess;
+
+    function spawnChildren() {
+        // kill previous spawned process
+        if (nodeProcess) {
+            nodeProcess.kill();
+        }
+        // `spawn` a child `gulp` process linked to the parent `stdio`
+        nodeProcess = spawn('gulp', [argv.task || 'default'], {stdio: 'inherit'});
+    }
+
+    gulp.watch('gulpfile.js', spawnChildren);
+    spawnChildren();
+
+    process.on('exit', function() {
+        if (nodeProcess){
+            nodeProcess.kill();
+        }
+    });
+});
 
 gulp.task('default', ['build', 'watch', 'serve']);
 

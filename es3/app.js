@@ -1,7 +1,7 @@
 
-var APP = {
-    models: [],
-    collections: [],
+this.APP = {
+    models: {},
+    collections: {},
     init: function() {
         console.log('started');
     }

@@ -40,7 +40,7 @@ var badTopics = ['angular.js', 'XML', 'SOAP-RPC', 'angular.js'];
                 throw new Error('bad topic ' + topic + ' added');
             }
 
-            if (this.likes.indexOf(topic) !== -1) {
+            if (this.likes.indexOf(topic) === -1) {
                 this.likes.push(topic);
             }
         },
@@ -69,7 +69,7 @@ var badTopics = ['angular.js', 'XML', 'SOAP-RPC', 'angular.js'];
             var name = this.name;
             var age = this.getAgeLabel();
             var location = this.location;
-            var likesStuff = name + ' likes ' + this.getLikes + ' in ' + location +'.';
+            var likesStuff = name + ' likes ' + this.getLikes() + ' in ' + location + '.';
             return {
                 name: name,
                 age: age,
@@ -84,7 +84,6 @@ var badTopics = ['angular.js', 'XML', 'SOAP-RPC', 'angular.js'];
             var name = this.name;
             var age = this.age;
             var location = this.location;
-            var likes = this.getLikes();
 
             API.save('/user', {
                 name: name,
