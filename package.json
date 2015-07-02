@@ -15,5 +15,24 @@
   "bugs": {
     "url": "https://github.com/dazld/es6-demo/issues"
   },
-  "homepage": "https://github.com/dazld/es6-demo#readme"
+  "homepage": "https://github.com/dazld/es6-demo#readme",
+  "dependencies": {
+    "babelify": "^6.1.2",
+    "browserify": "^10.2.4",
+    "connect-livereload": "^0.5.3",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-debug": "^2.0.1",
+    "gulp-if": "^1.2.5",
+    "gulp-livereload": "^3.8.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-util": "^3.0.6",
+    "gulp-watch": "^4.2.4",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.2.3"
+  }
 }

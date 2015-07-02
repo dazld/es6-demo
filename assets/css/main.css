@@ -1,0 +1,29 @@
+@import url('./another.css');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-family: 'Arvo', serif;
+    min-height: 100%;
+    height: 100%;
+}
+
+body {
+    transition: all 3s ease-in-out;
+    background: #efefef;
+    min-height: 100%;
+    height: 100%;
+}
+
+h1 {
+    font-size: 2rem;
+    line-height: 4rem;
+}
+
+p {
+    line-height: 1.7rem;
+}
