@@ -67,7 +67,7 @@ gulp.task('css', function() {
     return gulp.src('assets/css/**/*.css')
             .pipe(gulp.dest('static/css'))
             .pipe(liveReload());
-})
+});
 
 gulp.task('html', function() {
     return gulp.src('assets/**/*.html')
@@ -99,13 +99,13 @@ gulp.task('serve', ['build'], function() {
     });
 });
 
-gulp.task('concat', function(){
+gulp.task('concat', function() {
     return gulp.src('es3/**/*.js')
             .pipe(concat('bundle.js'))
             .pipe(notify('Concatted <%= file.relative %>'))
             .pipe(gulp.dest('static/js'))
             .pipe(liveReload());
-})
+});
 
 gulp.task('watch', function() {
     liveReload.listen();
