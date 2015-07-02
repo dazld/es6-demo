@@ -44,6 +44,10 @@ var badTopics = ['angular.js', 'XML', 'SOAP-RPC', 'angular.js'];
                 this.likes.push(topic);
             }
         },
+        addLikes: function(/* ..likes.. */) {
+            var likes = [].slice.apply(arguments);
+            likes.forEach(this.addLike, this);
+        },
         removeLike: function(topic) {
             var idxOfTopic = this.likes.indexOf(topic);
             var hasTopic = idxOfTopic !== -1;
