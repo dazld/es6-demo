@@ -16,7 +16,10 @@ Taking some oldschool browser style modular code and showing how it could look u
 
 - io.js 2.3+
 - `npm install`
-- `gulp`
+- `gulp auto-reload`
+- open http://localhost:9966 
+- Using concat build as default, can swap out to browserify & babel build by changing the build task to use `client` instead of `concat`
+- Static resources live in assets folder, and are copied to `static` when app runs. this is created if needed, and ignored by git.
 
 ## installing io.js
 
