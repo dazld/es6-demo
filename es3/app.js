@@ -1,8 +1,17 @@
 
-this.APP = {
+/*global $ */
+
+var APP = {
     models: {},
     collections: {},
     init: function() {
-        console.log('started');
+        $(function() {
+            var p = new APP.models.Person();
+
+            console.log('started', p.templateData());
+        });
+
     }
 };
+
+APP.init();
