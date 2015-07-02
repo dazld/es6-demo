@@ -1,23 +1,7 @@
 'use strict';
 // local scope
 import fn from './library';
+import Person from './person';
 
-
-
-const FOO = 'bar';
-const FOO2 = [1,2,3];
-
-
-
-
-console.log(foo); // throws
-
-// some point
-a = [b,c];
-
-
-fn();
-
-
-
-
+let p = new Person();
+console.log(p.templateData());

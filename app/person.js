@@ -50,11 +50,24 @@ class Person {
         return removedTopic;
 
     }
-    templateData: function() {
+    getAgeLabel(){
+
+        return formatAge(this.age);
+
+    }
+    getLikes(){
+
+        let likesString = '';
+
+        this.likes.forEach((like)=>`${likesString}, ${like}`);
+
+        return likesString;
+    }
+    templateData() {
         let name = this.name;
         let age = this.getAgeLabel();
         let location = this.location;
-        let likesStuff = `${name} likes ${this.getLikes() in ${location}}`;
+        let likesStuff = `${name} likes ${this.getLikes()} in ${location}}`;
         return {
             name,
             age,
@@ -76,9 +89,7 @@ Person.prototype = {
     getLikes: function() {
         return this.likes.join(', ');
     },
-    getAgeLabel: function getAgeLabel () {
-        return formatAge(this.age);
-    },
+
     isCloseTo: function(location) {
         return location === this.location;
     },
