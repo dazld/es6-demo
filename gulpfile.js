@@ -78,7 +78,8 @@ gulp.task('html', function() {
 
 gulp.task('assets',['css', 'html']);
 
-gulp.task('build', ['concat', 'assets']);
+// change client to concat to build the ES3 stuff
+gulp.task('build', ['client', 'assets']);
 
 
 
